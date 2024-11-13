@@ -1,12 +1,13 @@
 import axios from "axios";
 import { IAnimal } from "../models/IAnimal";
 
-export const getAnimals = async(): Promise<IAnimal[]> =>{
+const API_URL = "https://animals.azurewebsites.net/api/animals";
+
+export const getAnimalsApi = async(): Promise<IAnimal[]> =>{
     try {
-        const response = await axios.get(
-            `https://animals.azurewebsites.net/api/animals`
-        );
+        const response = await axios.get(API_URL);
         console.log(response.data);
+        localStorage.setItem("animals", JSON.stringify(response.data));
         return response.data;
     }
     catch (error) {
@@ -15,3 +16,13 @@ export const getAnimals = async(): Promise<IAnimal[]> =>{
         return[];
     }
 }
+
+export const getAnimalsLS = (): IAnimal[] => {
+    const animals = localStorage.getItem("animals");
+    return animals ? JSON.parse(animals) : [];
+};
+
+
+export const getAnimalLS = () => {
+    JSON.parse(localStorage.getItem("animals")) //id
+};

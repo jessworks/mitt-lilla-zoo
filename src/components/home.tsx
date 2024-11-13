@@ -1,12 +1,13 @@
 import { useEffect, useState } from 'react';
-import { getAnimals } from '../services/animalsService';
+import { getAnimalsLS } from '../services/animalsService';
 import { IAnimal } from '../models/IAnimal';
 
 export const AnimalList = () => {
   const [animals, setAnimals] = useState<IAnimal[]>([]);
 
   useEffect(() => {
-    getAnimals().then(setAnimals).catch(console.error);
+    const animalsFromLS = getAnimalsLS();
+    setAnimals(animalsFromLS);
   }, []);
 
   return (
