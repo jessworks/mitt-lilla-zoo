@@ -1,11 +1,11 @@
+import { RouterProvider } from "react-router-dom";
 import './App.css'
-import { AnimalList } from './components/home'
+import { router } from "./Router";
 
 function App() {
     return (
         <>
-            <h1>The Zoo</h1>
-            <AnimalList></AnimalList>
+            <RouterProvider router={router}></RouterProvider>
         </>
     );
 }

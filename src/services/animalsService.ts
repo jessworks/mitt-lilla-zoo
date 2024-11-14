@@ -23,6 +23,8 @@ export const getAnimalsLS = (): IAnimal[] => {
 };
 
 
-export const getAnimalLS = () => {
-    JSON.parse(localStorage.getItem("animals")) //id
+export const getAnimalLS = (id: number): IAnimal | undefined => {
+    const animals = localStorage.getItem("animals");
+    const parsedAnimals: IAnimal[] = animals ? JSON.parse(animals) : [];
+    return parsedAnimals.find((animal: IAnimal) => animal.id === id);
 };
