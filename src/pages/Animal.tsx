@@ -35,10 +35,15 @@ export const Animal = () => {
             {animal ? (
             <>
                 <h1>{animal.name}</h1>
+                <p>{animal.yearOfBirth}</p>
                 <img src={animal.imageUrl} alt={animal.name} style={{ width: "200px", height: "auto" }} />
-                <button onClick={handleFeedClick} disabled={btnDisabled}>Feed Me</button>
-                {animalFed && <p>{animal.name} was fed {timeFed}.</p>}
-                <button onClick={handleBackToZooClick}>Back to Zoo</button>
+                <p>{animal.shortDescription}</p>
+                <button onClick={handleFeedClick} disabled={btnDisabled}>Mata {animal.name}</button>
+                <button onClick={handleBackToZooClick}>Tillbaka till zoo</button>
+                {animalFed && <p>{animal.name} matades {timeFed}.</p>}
+                <h3>Lär dig mer</h3>
+                <p>{animal.name}s latinska namn är {animal.latinName}</p>
+                <p>{animal.longDescription}</p>
             </>
             ) : (
                 <h1>Animal not found</h1>

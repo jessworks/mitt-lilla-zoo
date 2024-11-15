@@ -5,6 +5,7 @@ export interface IAnimal{
     latinName: string;
     yearOfBirth: number;
     shortDescription: string;
+    longDescription: string;
     isFed: boolean;
     lastFed: number;
 }

@@ -17,17 +17,20 @@ export const AnimalList = () => {
   };
 
   return (
-    <div>
-      <ul>
-        {animals.map(animal => (
-          <li key={animal.id}>
-            <h3>{animal.name}</h3>
-            <img src={animal.imageUrl} alt={animal.name} style={{ width: "200px", height: "auto" }} />
-            <button onClick={() => handleVisitClick(animal.id)}>Visit</button>
-          </li>
-        ))}
-      </ul>
+    <>
+      <h1>Mitt lilla zoo</h1>
+      <div>
+        <ul>
+          {animals.map(animal => (
+            <li key={animal.id}>
+              <h3>{animal.name}</h3>
+              <img src={animal.imageUrl} alt={animal.name} style={{ width: "200px", height: "auto" }} />
+              <button onClick={() => handleVisitClick(animal.id)}>Hälsa på</button>
+            </li>
+          ))}
+        </ul>
     </div>
+    </>
   );
 };
 
