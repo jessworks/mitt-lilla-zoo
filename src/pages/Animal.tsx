@@ -8,9 +8,7 @@ import { getAnimalLS } from '../services/animalsService';
 export const Animal = () => {
     const { id } = useParams<{ id:string }>();
     const [animal, setAnimal] = useState<IAnimal | undefined>(undefined);
-    const [animalFed, setAnimalFed] = useState(false);
     const [btnDisabled, setBtnDisabled] = useState(false);
-    const [timeFed, setTimeFed] = useState(0);
     const navigate = useNavigate();
   
     useEffect(() => {
@@ -21,9 +19,16 @@ export const Animal = () => {
     }, [id]);
 
     const handleFeedClick = () => {
-        setAnimalFed(true);
-        setBtnDisabled(true);
-        setTimeFed(new Date().toLocaleDateString([], { hour: '2-digit', minute: '2-digit' }));
+
+        if (animal) {
+            const updatedAnimal = {
+                ...animal,
+                isFed: true,
+                lastFed: Date.now(),
+            };
+            setAnimal(updatedAnimal);
+            setBtnDisabled(true);
+        }
     };
 
     const handleBackToZooClick = () => {
@@ -40,7 +45,7 @@ export const Animal = () => {
                 <p>{animal.shortDescription}</p>
                 <button onClick={handleFeedClick} disabled={btnDisabled}>Mata {animal.name}</button>
                 <button onClick={handleBackToZooClick}>Tillbaka till zoo</button>
-                {animalFed && <p>{animal.name} matades {timeFed}.</p>}
+                {animal.isFed && <p>{animal.name} matades {new Date(animal.lastFed).toLocaleString([], { hour: '2-digit', minute: '2-digit' })}.</p>}
                 <h3>Lär dig mer</h3>
                 <p>{animal.name}s latinska namn är {animal.latinName}</p>
                 <p>{animal.longDescription}</p>
