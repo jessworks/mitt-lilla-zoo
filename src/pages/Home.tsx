@@ -2,6 +2,11 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { getAnimalsLS } from '../services/animalsService';
 import { IAnimal } from '../models/IAnimal';
+import { Button } from '../components/styled/Buttons';
+import { H1 } from '../components/styled/H1';
+import { H3 } from '../components/styled/H3';
+import { Li } from '../components/styled/Li';
+
 
 export const AnimalList = () => {
   const [animals, setAnimals] = useState<IAnimal[]>([]);
@@ -18,15 +23,15 @@ export const AnimalList = () => {
 
   return (
     <>
-      <h1>Mitt lilla zoo</h1>
+      <H1>Mitt lilla zoo</H1>
       <div>
         <ul>
           {animals.map(animal => (
-            <li key={animal.id}>
-              <h3>{animal.name}</h3>
+            <Li key={animal.id}>
+              <H3>{animal.name}</H3>
               <img src={animal.imageUrl} alt={animal.name} style={{ width: "200px", height: "auto" }} />
-              <button onClick={() => handleVisitClick(animal.id)}>Hälsa på</button>
-            </li>
+              <Button onClick={() => handleVisitClick(animal.id)}>Hälsa på</Button>
+            </Li>
           ))}
         </ul>
     </div>

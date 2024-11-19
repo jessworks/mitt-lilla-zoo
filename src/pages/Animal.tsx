@@ -3,6 +3,9 @@ import { useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { IAnimal } from "../models/IAnimal";
 import { getAnimalLS } from '../services/animalsService';
+import { Button } from '../components/styled/Buttons';
+import { P } from '../components/styled/P';
+import { H3 } from '../components/styled/H3';
 
 
 export const Animal = () => {
@@ -27,6 +30,7 @@ export const Animal = () => {
                 lastFed: Date.now(),
             };
             setAnimal(updatedAnimal);
+           
             setBtnDisabled(true);
         }
     };
@@ -40,15 +44,15 @@ export const Animal = () => {
             {animal ? (
             <>
                 <h1>{animal.name}</h1>
-                <p>{animal.yearOfBirth}</p>
+                <P>{animal.yearOfBirth}</P>
                 <img src={animal.imageUrl} alt={animal.name} style={{ width: "200px", height: "auto" }} />
-                <p>{animal.shortDescription}</p>
-                <button onClick={handleFeedClick} disabled={btnDisabled}>Mata {animal.name}</button>
-                <button onClick={handleBackToZooClick}>Tillbaka till zoo</button>
-                {animal.isFed && <p>{animal.name} matades {new Date(animal.lastFed).toLocaleString([], { hour: '2-digit', minute: '2-digit' })}.</p>}
-                <h3>Lär dig mer</h3>
-                <p>{animal.name}s latinska namn är {animal.latinName}</p>
-                <p>{animal.longDescription}</p>
+                <P>{animal.shortDescription}</P>
+                <Button onClick={handleFeedClick} disabled={btnDisabled}>Mata {animal.name}</Button>
+                <Button onClick={handleBackToZooClick}>Tillbaka till zoo</Button>
+                {animal.isFed && <P>{animal.name} matades {new Date(animal.lastFed).toLocaleString([], { hour: '2-digit', minute: '2-digit' })}.</P>}
+                <H3>Lär dig mer</H3>
+                <P>{animal.name}s latinska namn är {animal.latinName}</P>
+                <P>{animal.longDescription}</P>
             </>
             ) : (
                 <h1>Animal not found</h1>
