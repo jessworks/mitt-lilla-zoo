@@ -1,17 +1,22 @@
 import { createBrowserRouter } from "react-router-dom";
 import { AnimalList } from "./pages/Home";
 import { Animal } from "./pages/Animal";
+import { Layout } from "./components/Layout";
 
 
 export const router = createBrowserRouter([
     {
-        // Route to render the home page directly
         path: "/",
-        element: <AnimalList />,
-    },
-    {
-        // Route for a specific animal page with dynamic `id`
-        path: "/Animal/:id",
-        element: <Animal />,
-    },
+        element: <Layout />,
+        children: [
+            {
+                path: "/",
+                element: <AnimalList />,
+            },
+            {
+                path: "/Animal/:id",
+                element: <Animal />,
+            },
+        ]
+    }
 ]);

@@ -23,7 +23,7 @@ export const AnimalList = () => {
 
   return (
     <>
-      <H1>Mitt lilla zoo</H1>
+      
       <div>
         <ul>
           {animals.map(animal => (

@@ -6,6 +6,7 @@ import { getAnimalLS } from '../services/animalsService';
 import { Button } from '../components/styled/Buttons';
 import { P } from '../components/styled/P';
 import { H3 } from '../components/styled/H3';
+import { H1 } from '../components/styled/H1';
 
 
 export const Animal = () => {
@@ -30,7 +31,7 @@ export const Animal = () => {
                 lastFed: Date.now(),
             };
             setAnimal(updatedAnimal);
-           
+            //ls
             setBtnDisabled(true);
         }
     };
@@ -43,7 +44,7 @@ export const Animal = () => {
         <>
             {animal ? (
             <>
-                <h1>{animal.name}</h1>
+                <h2>{animal.name}</h2>
                 <P>{animal.yearOfBirth}</P>
                 <img src={animal.imageUrl} alt={animal.name} style={{ width: "200px", height: "auto" }} />
                 <P>{animal.shortDescription}</P>
