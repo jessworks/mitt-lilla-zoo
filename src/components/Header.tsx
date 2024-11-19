@@ -1,13 +1,13 @@
 import { H1 } from "./styled/H1";
-import { HeaderWrapper } from "./styled/HeaderWrapper";
+import { HeaderContainer } from "./styled/HeaderContainer";
 
 
 export const Header = () => {
     return (
         <>
-            <HeaderWrapper>
+            <HeaderContainer>
                 <H1>Mitt lilla zoo</H1>
-            </HeaderWrapper>
+            </HeaderContainer>
         </>
     );
 };

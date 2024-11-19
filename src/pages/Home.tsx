@@ -6,6 +6,7 @@ import { Button } from '../components/styled/Buttons';
 import { H3 } from '../components/styled/H3';
 import { Li } from '../components/styled/Li';
 import { Img } from '../components/styled/Img';
+import { AnimalContainer } from '../components/styled/AnimalContainer';
 
 
 export const AnimalList = () => {
@@ -23,15 +24,16 @@ export const AnimalList = () => {
 
   return (
     <>
-      
       <div>
         <ul>
           {animals.map(animal => (
-            <Li key={animal.id}>
+            <AnimalContainer>
+              <Li key={animal.id}>
               <H3>{animal.name}</H3>
               <Img src={animal.imageUrl} alt={animal.name} />
               <Button onClick={() => handleVisitClick(animal.id)}>Hälsa på</Button>
             </Li>
+            </AnimalContainer>
           ))}
         </ul>
     </div>
