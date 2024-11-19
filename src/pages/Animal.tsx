@@ -7,6 +7,7 @@ import { Button } from '../components/styled/Buttons';
 import { P } from '../components/styled/P';
 import { H3 } from '../components/styled/H3';
 import { H1 } from '../components/styled/H1';
+import { H2 } from '../components/styled/H2';
 
 
 export const Animal = () => {
@@ -44,7 +45,7 @@ export const Animal = () => {
         <>
             {animal ? (
             <>
-                <h2>{animal.name}</h2>
+                <H2>{animal.name}</H2>
                 <P>{animal.yearOfBirth}</P>
                 <img src={animal.imageUrl} alt={animal.name} style={{ width: "200px", height: "auto" }} />
                 <P>{animal.shortDescription}</P>
@@ -56,7 +57,7 @@ export const Animal = () => {
                 <P>{animal.longDescription}</P>
             </>
             ) : (
-                <h1>Animal not found</h1>
+                <H2>Animal not found</H2>
             )}
         </>
     )
